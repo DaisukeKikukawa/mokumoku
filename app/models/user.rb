@@ -4,6 +4,8 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
 
   has_many :events, dependent: :destroy
+  has_many :group_users
+  has_many :groups, through: :group_users
   has_many :event_attendances, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :attend_events, through: :event_attendances, class_name: 'Event', source: :event
