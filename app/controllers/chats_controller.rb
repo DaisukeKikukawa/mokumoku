@@ -1,4 +1,5 @@
 class ChatsController < ApplicationController
+  before_action :require_login
   def create
     @group = Group.find(params[:group_id])
     @chat = @group.chats.new(chat_params)
