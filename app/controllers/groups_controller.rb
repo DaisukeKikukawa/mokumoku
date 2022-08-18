@@ -18,7 +18,6 @@ class GroupsController < ApplicationController
     redirect_to  groups_path
   end
 
-
   def new
     @group = Group.new
   end
@@ -44,12 +43,6 @@ class GroupsController < ApplicationController
       render "edit"
     end
   end
-
-
-
-
-
-
 
   private
 
