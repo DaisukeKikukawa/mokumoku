@@ -9,7 +9,7 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @chat = Chat.new
-    @chats = @group.chats
+    @chats = @group.chats.includes(:user)
   end
 
   def join
