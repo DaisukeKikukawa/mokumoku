@@ -53,7 +53,7 @@ class GroupsController < ApplicationController
   def ensure_correct_user
     @group = Group.find(params[:id])
     unless @group.owner_id == current_user.id
-      redirect_to groups_path
+      redirect_to groups_path, alert: "グループのオーナーではありません"
     end
   end
 end
