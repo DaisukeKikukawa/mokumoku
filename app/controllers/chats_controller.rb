@@ -9,15 +9,8 @@ class ChatsController < ApplicationController
     else
       @group_new = Group.new
       @comments = @post.comments
-      redirect_to new_group_path
+      render 'groups/show'
     end
-  end
-
-  def destroy
-    @group = Group.find(params[:group_id])
-    @chat = Chat.find(params[:id])
-    @chat.destroy
-    redirect_to request.referer
   end
 
   private
