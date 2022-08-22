@@ -1,13 +1,14 @@
 class GroupsController < ApplicationController
   before_action :require_login
+  before_action :set_group, only: [:show, :destroy]
   before_action :ensure_correct_user, only: [:edit, :update]
+
 
   def index
     @groups = Group.all
   end
 
   def show
-    @group = Group.find(params[:id])
     @chat = Chat.new
     @chats = @group.chats.includes(:user)
   end
@@ -45,12 +46,16 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-    @group = Group.find(params[:id])
     @group.users.delete(current_user)
     redirect_to groups_path
   end
 
   private
+
+  def set_group
+    @group = Group.find(params[:id])
+  end
+
 
   def group_params
     params.require(:group).permit(:name, :introduction)
