@@ -38,6 +38,7 @@ module Mokumoku
       g.system_tests = nil
       g.assets = false
       g.helper = false
+      g.test_framework false
     end
 
     config.i18n.default_locale = :ja

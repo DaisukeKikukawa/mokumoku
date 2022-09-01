@@ -2,6 +2,10 @@
 
 Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  resources :groups do
+    get "join" => "groups#join"
+    resources :chats, only: [:create, :destroy]
+  end
   get 'events/index'
   root 'events#index'
   get 'login', to: 'sessions#new'
